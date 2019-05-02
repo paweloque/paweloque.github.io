@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VUE Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-if="formell">Guten Tag Herr {{user.last}}</h1>
+    <h1 v-else>Hallo {{user.first}}</h1>
+    Wie heissen sie?<br>
+    <input type="text" v-model="user.first">
+    <input type="text" v-model="user.last">
+    <button v-on:click="toggleFormell">Formalität kehren</button>
+
+    <ul>
+      <li v-for="hobby, index of user.hobbies">{{hobby}} <button @click="delHobby(index)">x</button></li>
+    </ul>
+    <input type="text" v-model="newHobby" @keyup.enter="addHobby"><button @click="addHobby">add</button>
+  </div>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        formell: false,
+        user: JSON.parse(localStorage.getItem("user")) || 
+              {first: "Werner", last: "Günthör", hobbies: ["Kugelstossen"]},
+        newHobby: "",
+      },
+      methods: {
+        toggleFormell: function() {
+          this.formell = !this.formell;
+        },
+        addHobby: function() {
+          this.user.hobbies.push(this.newHobby);
+          this.newHobby = "";
+          this.save();
+        },
+        delHobby: function(idx) {
+          this.user.hobbies.splice(idx, 1);
+          this.save();
+        },
+        save: function() {
+          localStorage.setItem("user", JSON.stringify(this.user))
+        }
+      }
+    });
+  </script>
+</body>
+</html>
