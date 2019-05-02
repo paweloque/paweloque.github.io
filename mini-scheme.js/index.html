@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>mini-scheme.js</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.logrocket.com/LogRocket.min.js"></script>
+    <script>window.LogRocket && window.LogRocket.init('cf4wag/mini-scheme');</script>
+  </head>
+  <body>
+    <h1>mini-scheme.js</h1>
+    <div id="app">
+      <h4>Source</h4>
+      <code class="chrome">(begin</code>
+      <textarea v-model="input" spellcheck="false"></textarea><br>
+      <small v-if="parenBalance > 0">{{parenBalance}} open paren</small>
+      <small v-else-if="parenBalance < 0" class="error">{{-parenBalance}} extra closed paren</small>
+      <small v-else>&nbsp;</small>
+      <code class="chrome">)</code>
+      <p v-if="error" class="error"><strong>{{error.name}}: </strong>{{error.message}}</p>
+      <template v-else>
+        <h4 v-if="eval_gen">Debugger</h4>
+        <p v-if="eval_gen" class="code">
+          <button v-on:click="debuggerStep">Step</button>
+          <button v-on:click="debuggerContinue">Continue</button>
+          <button v-on:click="debuggerPlay">Play</button>
+        </p>
+        <h4 v-if="!eval_gen">Result</h4>
+        <p v-if="!eval_gen" class="code">{{result}}</p>
+      </template>
+      <div class="tokens">
+        <h4>Tokens</h4>
+        <p>
+          <template v-for="token in tokens">
+            <span v-bind:id="token.id" class="token tooltip" v-bind:class="{tokendone: token.done, tokenstarted: token.started}" :key="token.valueOf()">
+              {{token.valueOf()}}<span class="tooltiptext">Line: {{token.line}}:{{token.col}}</span></span>&nbsp;
+          </template>
+        </p>
+      </div>
+      <div class="ast">
+        <h4>Syntax Tree</h4>
+        <item :model="ast"></item>
+      </div>
+      <div class="env">
+        <h4>Environment</h4>
+        <ul class="env">
+          <li v-for="(val, key) in env" :key="key">
+            <strong>{{key}}</strong> : {{typeof val === "object" ? "function": "number"}}
+          </li>
+        </ul>
+        <h4>Global Environment</h4>
+        <ul class="env">
+          <li v-for="(val, key) in global_env" :key="key">
+            <strong>{{key}}</strong> : {{typeof val === "function" ? "function": "number"}}
+          </li>
+        </ul>
+        <h4>Special Forms</h4>
+        <ul class="env">
+          <li>(<b><i>begin</i></b> <i>expr</i> <i>...</i>)</li>
+          <li>(<b><i>define</i></b> <i>name</i> <i>expr</i>)</li>
+          <li>(<b><i>if</i></b> <i>test</i> <i>conseq</i> <i>alt</i>)</li>
+          <li>(<b><i>lambda</i></b> (<i>arg_names</i>) <i>body</i>)</li>
+        </ul>
+      </div>
+      <hr>
+      <h4>Links</h4>
+      <a href="http://norvig.com/lispy.html">Peter Norvig's lis.py</a>
+    </div>
+
+    <!-- item template -->
+    <script type="text/x-template" id="item-template">
+      <li v-if="isList">
+        <ul :class="{collapsed: collapsed, lambdaArgList: isLambdaArgList}" >
+          <item v-for="(item, idx) of model" :key="item.toString()"
+                :model="item" :index="idx" :parentToggle="toggle"
+                :parentModel="model"></item>
+        </ul>
+      </li>
+      <li v-else :class="model.valueOf()" v-on:click="click">{{model.valueOf()}}</li>
+    </script>
+    <script src="vue.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>
