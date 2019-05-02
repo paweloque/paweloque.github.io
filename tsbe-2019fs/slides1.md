@@ -143,6 +143,18 @@ class: center, middle
   * ...
   
 ---
+# Requirements und Design
+
+* Wie können requirements definiert werden?
+  * [Gherkin](https://cucumber.io/docs/gherkin/reference/) 
+
+* [Design Sprint](https://www.gv.com/sprint/)
+
+* [Design Studio Method](https://www.edenspiekermann.com/insights/working-with-design-studios/)
+
+* Wieso UX Design?
+
+---
 # Screen Designs ...
 
 .center[![UI Sketch](ui-sketches.jpg)]
