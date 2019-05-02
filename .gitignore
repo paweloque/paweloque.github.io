@@ -1,0 +1,6 @@
+# mac files
+.DS_Store
+
+# ide & text
+.idea/*
+
