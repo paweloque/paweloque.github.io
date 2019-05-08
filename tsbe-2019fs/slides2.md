@@ -417,6 +417,55 @@ Point.prototype.dist = function () {
 ```
 
 ---
+# Console API
+
+console API kann für die Ausgabe verwendet werden
+
+```JavaScript
+// print a normal message
+console.log('hello');
+
+// console print a warning message
+console.warn('this is a warning');
+
+// make a timing
+console.time('loop');
+var i = 10000;
+while ( i-- ) {
+    //console.log( i );
+}
+console.timeEnd('loop');
+```
+
+---
+# Console API - table
+
+console API kann auch tabelarische Ausgaben machen
+
+```JavaScript
+// json/object
+abc = {'a': 12, 'b': 21}
+
+// console print a table
+console.table(abc);
+```
+
+---
+# Debug API
+
+debug API kann für die Ausgabe verwendet werden
+
+```JavaScript
+
+function abc(x) {
+    console.log(x);
+    return x;
+}
+
+debug(abc);
+```
+
+---
 # Bad Parts: Globale Variablen
 
 Wenn man das `var` vergisst, kreiert man automatisch eine globale Variable.
@@ -464,6 +513,21 @@ true + true;        // 2
 ' \t\n' === 0;      // false
 null === undefined; // false
 ```
+---
+# Warmup - Gruppenarbeit
+
+## Fat arrows
+
+## Functional JavaScript
+
+## Destructuring
+
+## Template literals
+
+## let vs. var
+
+## New array functions
+
 ---
 class: middle, center
 # JavaScript Zukunft
