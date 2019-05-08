@@ -525,17 +525,12 @@ null === undefined; // false
 ---
 # Warmup - Gruppenarbeit
 
-## Fat arrows
-
-## Functional JavaScript
-
-## Destructuring
-
-## Template literals
-
-## let vs. var
-
-## New array functions
+* Fat arrows
+* Functional JavaScript
+* Destructuring
+* Template literals
+* let vs. var
+* New array functions
 
 ---
 class: middle, center
