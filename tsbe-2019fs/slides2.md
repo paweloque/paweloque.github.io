@@ -364,6 +364,15 @@ var cube = function(x) {
 ```
 
 ---
+# Asynchrone Funktionen
+
+
+```JavaScript
+async function ... {
+}
+```
+
+---
 # Funktionen sind Objekte
 
 Man kann sie als Argumente übergeben:
