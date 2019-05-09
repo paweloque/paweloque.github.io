@@ -71,6 +71,12 @@ Github: wie paweloque.github.io
 .middle.center[!<img src="setup-github-2nd.png" alt="drawing" width="500"/>]
 
 ---
+class: center
+# Experimenting
+
+[glitch.com](https://glitch.com/)
+
+---
 
 # Heute
 
