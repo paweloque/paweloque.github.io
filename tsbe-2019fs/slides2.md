@@ -9,11 +9,24 @@ Pawel Kowalski
 
 .footnote.bottom[<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/assets/by-sa.svg" /></a>]
 
+
+---
+
+# Letzter Kurstag
+
+- Was und wozu ist Webentwicklung
+
+- Technologien
+
+- HTML im Schnelldurchlauf (zu schnell?)
+
+- UX & Design Methoden
+
 ---
 
 # Kursübersicht
 
-1. Einführung, HTML, UX-Desing, Projektstart
+1. Webentwicklung, Technologien, HTML, UX-Design , Projektstart
 
 2. **CSS, CSS-Frameworks, Einführung JavaScript**
 
@@ -25,13 +38,45 @@ Pawel Kowalski
 
 ---
 
+# Administratives
+
+- Kurzer Test am 24. Mai
+- Das Projekt wird bewertet, was sind die Kriterien?
+  - Projektbericht
+     * Beschreibung der Projektidee
+     * Papierprototyp
+     * Fazit (Technisch und Teamwork)
+  - Präsentation und Demo
+     * 5 Minuten Präsentation & Demo
+  - Funktionalität und Code
+
+---
+
+# Deployment
+
+Github: wie paweloque.github.io
+
+* Repository Name: `<username>.github.io`
+
+<img src="setup-github-1st.png" alt="drawing" width="500"/>
+
+---
+
+# Deployment
+
+Github: wie paweloque.github.io
+
+* Repository Name: `<username>.github.io`
+
+<img src="setup-github-2nd.png" alt="drawing" width="500"/>
+
+---
+
 # Heute
 
 1. CSS
 
 2. Gruppenarbeit: CSS-Frameworks
-
-3. Person des Tages: John McCarthy
 
 4. Einführung JavaScript
 
