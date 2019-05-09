@@ -58,7 +58,7 @@ Github: wie paweloque.github.io
 
 * Repository Name: `<username>.github.io`
 
-<img src="setup-github-1st.png" alt="drawing" width="500"/>
+.middle.center[!<img src="setup-github-1st.png" alt="drawing" width="500"/>]
 
 ---
 
@@ -68,7 +68,7 @@ Github: wie paweloque.github.io
 
 * Repository Name: `<username>.github.io`
 
-<img src="setup-github-2nd.png" alt="drawing" width="500"/>
+.middle.center[!<img src="setup-github-2nd.png" alt="drawing" width="500"/>]
 
 ---
 
@@ -237,22 +237,21 @@ ID-Attribute haben in einem HTML einen speziellen Status, denn sie dürfen in
 jedem Dokument genau einmal verwendet werden.
 
 ---
-# Tutorials
 
-* MDN Tutorials:
-  * [Simple selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors)
-  * [Values and units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units)
+# Gruppenarbeiten
 
+* [Learn Layout](https://learnlayout.com)
+  * [Position example](https://learnlayout.com/position-example.html)
 
-* Code Academy (Registrierung erforderlich)
-  * [Learn CSS](https://www.codecademy.com/learn/learn-css)
+* CSS Grid
+  * [CSS Grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
+  * [CSS Grid example](https://paweloque.github.io/cssgrid/index.html)
 
----
+* Box-Model
+  * Box-Model erklären
 
-# John McCarthy
-.middle.center[![John McCarthy](jmc.jpg)]
-
-.center[Entdecker von LISP]
+* CSS Frameworks 
+  * Framework vorstellen und erklären wieso es sowas gibt
 
 ---
 
@@ -268,8 +267,6 @@ jedem Dokument genau einmal verwendet werden.
 # Features
 
 * Dynamisch typisiert
-
-* Keine Klassen. Prototypen!
 
 * Funktionen sind auch Objekte
 
@@ -347,6 +344,9 @@ var i;
 for(i = 0; i < a.length; i += 1) {
     console.log(a[i]);
 }
+
+// oder funktional
+a.map(e => console.log(e));
 ```
 
 ---
@@ -411,11 +411,19 @@ var cube = function(x) {
 ---
 # Asynchrone Funktionen
 
-
 ```JavaScript
-async function ... {
-}
+async function foobar() {
+  for (name of ["nkgokul", "BrendanEich", "gaearon"]) {
+    var userDetails = await fetch("https://api.github.com/users/" + name);
+    var userDetailsJSON = await userDetails.json();
+    console.log("userDetailsJSON", userDetailsJSON);
+  }
+}  
+
+foobar();
 ```
+
+https://glitch.com/edit/#!/delicious-cobra
 
 ---
 # Funktionen sind Objekte
@@ -456,6 +464,7 @@ function Point(x, y) {
 
 // Anwendung mit 'new'
 var p = new Point(3, 4);
+
 console.log(p.dist());  // -> 5
 ```
 ---
@@ -469,6 +478,19 @@ Point.prototype.dist = function () {
     return Math.sqrt(this.x*this.x + this.y*this.y);
 };
 ```
+
+```JavaScript
+class Point {
+  dist() {
+    return Math.sqrt(this.x*this.x + this.y*this.y);
+  }
+}
+
+p = new Point(2, 5)
+p.dist()
+```
+
+[JavaScript Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
 ---
 # Console API
@@ -568,7 +590,18 @@ true + true;        // 2
 null === undefined; // false
 ```
 ---
-# Warmup - Gruppenarbeit
+class: center
+# Applikationen mit JavaScript
+
+wie funktioniert das mit JavaScript und HTML eigentlich?
+
+https://glitch.com/edit/#!/jolly-mitten
+
+http://jsonplaceholder.typicode.com/users/1
+
+---
+
+# Gruppenarbeit
 
 * Fat arrows
 * Functional JavaScript
@@ -582,6 +615,14 @@ class: middle, center
 # JavaScript Zukunft
 
 Alles <del>wird</del> **ist** gut mit ES6
+
+[Can I use](https://caniuse.com/#search=es6)
+
+---
+class: middle, center
+# JavaScript Resourcen
+
+[Mozilla Developer Network (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ---
 class: center
