@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Listing</title>
+<meta charset="utf-8"/>
+<link href="/assets/application.css" media="all" rel="stylesheet" />
+<link href="/assets/jquery-ui-1.11.4.custom.min.css" media="all" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/highlight.min.css">
+<style>
+body {
+  margin:0;
+  padding:0;
+  background-color: #F0F0F0;
+}
+h1 {
+  margin: 0;
+  padding: 10px;
+  background-color: lightgray;
+  font-family: monospace;
+  font-size: 25px;
+}
+pre {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+code {
+  padding: 10px 10px !important;
+}
+</style>
+</head>
+<body>
+<h1 id="title"></h1>
+<pre><code id="code"></code></pre>
+<script src="/assets/jquery-2.0.0.min.js"></script>
+<script src="/assets/jquery-ui-1.11.4.custom.min.js"></script>
+<script src="/assets/jquery.fullscreen-min.js"></script>
+<script src="/assets/urlparam.js"></script>
+<script src="/assets/utf8.js"></script>
+<script src="/assets/term.js"></script>
+<script src="/assets/showterm.js"></script>
+<script src="/assets/application.js"></script>
+<script src="/assets/highlight.min.js"></script>
+<script>
+$(document).ready(function() {
+    var dataFile = $.urlParam("data");
+
+    if (dataFile !== 0) {
+        var filename = dataFile.split('/');
+        filename = filename[filename.length - 1];
+        document.getElementById('title').innerHTML = "<a href=\"" + dataFile + "\" download>" + filename + "</a>";
+        $.get(dataFile, function(data) {
+            document.getElementById('code').innerHTML = data.replace(/</g, "&lt;");
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        }, 'text').fail(function() {
+            alert("Failed to fetch '" + dataFile + "'");
+        });
+    } else {
+        alert("No 'data' URL-parameter supplied");
+    }
+});
+</script>
+</body>
+</html>
