@@ -10,9 +10,13 @@
       top: 50%;
       left: 50%;
     }
+    .marked {
+      text-decoration: line-through;
+    }
   </style>
 </head>
 <body>
+  <div>Hallo guete morgen Bäern</div>
   <div id="app">
     <h1 v-if="formell">Guten Tag Herr {{user.last}}</h1>
     <h1 v-else>Hallo {{user.first}}</h1>
@@ -20,9 +24,13 @@
     <input type="text" v-model="user.first">
     <input type="text" v-model="user.last">
     <button v-on:click="toggleFormell">Formalität kehren</button>
+    <button v-on:click="formell = !formell">Formalität kehren direkt</button>
 
     <ul>
-      <li v-for="hobby, index of user.hobbies">{{hobby}} <button @click="delHobby(index)">x</button></li>
+      <li :class="{marked: hobby.marked}" v-for="hobby, index of user.hobbies">{{hobby.name}} 
+        <button @click="delHobby(index)">x</button>
+        <button @click="markHobby(index)">y</button>
+      </li>
     </ul>
     <input type="text" v-model="newHobby" @keyup.enter="addHobby"><button @click="addHobby">add</button>
   </div>
@@ -34,7 +42,9 @@
       data: {
         formell: false,
         user: JSON.parse(localStorage.getItem("user")) || 
-              {first: "Werner", last: "Günthör", hobbies: ["Kugelstossen"]},
+              {first: "Werner", last: "Günthör", 
+                hobbies: [{name: "Kugelstossen", marked: true}]
+              },
         newHobby: "",
       },
       methods: {
@@ -42,12 +52,16 @@
           this.formell = !this.formell;
         },
         addHobby: function() {
-          this.user.hobbies.push(this.newHobby);
+          this.user.hobbies.push({name: this.newHobby, marked: false});
           this.newHobby = "";
           this.save();
         },
         delHobby: function(idx) {
           this.user.hobbies.splice(idx, 1);
+          this.save();
+        },
+        markHobby: function(idx) {
+          this.user.hobbies[idx].marked = !this.user.hobbies[idx].marked;
           this.save();
         },
         save: function() {
