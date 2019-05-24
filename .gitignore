@@ -4,3 +4,4 @@
 # ide & text
 .idea/*
 
+movie-voting/node_modules/**
